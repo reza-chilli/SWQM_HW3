@@ -9,7 +9,8 @@ calculatedConcentration(1) = initConcentration;
 eigenValue = (riverDischarge/lakeVolume) + (sedimentRate/(lakeVolume/lakeArea));  % 1/yr
 
 for i = 1:length(calculatedConcentration) - 1
-    calculatedConcentration(i+1) = (initConcentration/(eigenValue + populationGrowthRate)) * (exp(populationGrowthRate * (i - 1)) - exp(-eigenValue * (i - 1)));
+    % exponential loading function
+    calculatedConcentration(i+1) = (initConcentration/(eigenValue + populationGrowthRate)) * (exp(populationGrowthRate * (i)) - exp(-eigenValue * (i)));
 end
 x = 1994:1:2010;
 % initiating plot with labels
